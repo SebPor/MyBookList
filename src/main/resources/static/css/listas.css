@@ -1,0 +1,112 @@
+/*CONFIGURACION GENERAL*/
+*{
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #343434;
+    width: 100%;
+    margin: 0 auto;
+    color: #F7FFF7;
+}
+
+ul{
+    width: 80%;
+    margin: auto;
+    display: block;
+    background-color: #2F3061;
+    border-bottom: solid #6CA6C1 1px;
+    margin-bottom: 20px;
+}
+
+li{
+    margin: 0;
+    width: 24.2%;
+    display: inline-block;
+    text-align: center;
+}
+section{
+    background-color: #2F3061;
+    width: 80%;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #F7FFF7;
+}
+
+a:hover{
+    color: #FFE66D;
+}
+ /*CONFIGURAR EL TITULO*/
+#titulo-lista{
+    color:#FFE66D;
+    padding-top: 50px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 100px;
+    text-align: center;
+    background-color: #343434;
+}
+header{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/*cONFIGURAR LA TABLA*/
+table{
+    width: 100%;
+    
+}
+th{
+    padding-top: 4px;
+    text-align: center;
+    color:#F7FFF7;
+    padding-bottom:3px;
+    border: solid #6CA6C1 1px
+}
+td{
+    padding-left: 10px;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #343434;
+    border: solid #6CA6C1 1px
+}
+/*
+.par{
+    background-color: red;
+}
+.impar{
+    background-color: blue;
+}*/
+#seleccion{
+    color:#FFE66D;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    border: solid #343434 1px;
+    padding: 5px;
+    background-color: #343434;
+}
+
+.seleccionado{
+    background-color: #343434;
+}
+
+.seleccionado a:hover{
+    color:#FFE66D;
+}
+.seleccionado a{
+    color:#F7FFF7;
+}
+
+.centrado{
+    padding: 0;
+    text-align: center;
+}
