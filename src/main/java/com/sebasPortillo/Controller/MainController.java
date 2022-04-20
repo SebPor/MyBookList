@@ -15,11 +15,13 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/login")
     public String logIn(Model model){
 
         return "login";
     }
 
+    @GetMapping("/singin")
     public String singId(Model model){
 
         return "singin";
