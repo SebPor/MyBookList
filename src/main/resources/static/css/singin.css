@@ -1,0 +1,108 @@
+/*
+    CONFIGURACIÓN DE LOS DIVS
+*/
+div {
+    margin-top: 10%;
+    width: 45%;
+    display: inline-block;
+    height: 500px;
+    border: solid red 1px;
+}
+
+#derecha {
+    float: right;
+    border: solid #99BDCF 5px;
+    background-color: #99BDCF;
+    border-radius: 10px;
+}
+
+#izquierda {
+    float: left;
+}
+
+/*
+    BARRA DIVISORIA
+*/
+hr {
+    position: absolute;
+    margin: auto;
+    width: 4px;
+    height: 85%;
+    z-index: -1;
+    margin-left: calc(40%);
+    background-color: #6CA6C1;
+    border: none;
+}
+
+/*
+    CONFIGURACIÓN DEL TITULO
+*/
+
+h2 {
+    width: fit-content;
+    margin: auto;
+    margin-top: 75px;
+}
+
+/*
+    CONFIGURACIÓN DE LOS INPUTS
+*/
+
+input {
+    display: block;
+    width: 70%;
+    border-radius: 50px;
+    height: 40px;
+    margin: auto;
+    margin-top: 20px;
+    border: none;
+}
+
+input::placeholder {
+    color: black;
+    text-align: left;
+    padding-left: 15px;
+    font-style: italic;
+}
+
+input:last-of-type {
+    margin-top: 45px;
+    background-color: #2F3061;
+    color: #F7FFF7;
+}
+
+#enviar {
+    width: 30%;
+    font-style: bold;
+}
+
+#enviar:hover {
+    background-color: black;
+    color: white;
+}
+
+/*
+    CONFIGURACIÓN DE LOS ENLACES DE ABAJO
+*/
+p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+p:first-of-type {
+    margin-top: 30px;
+}
+
+a {
+    color: #2F3061;
+}
+
+/*
+    CONFIGURACIÓN DE LA IMAGEN
+*/
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}

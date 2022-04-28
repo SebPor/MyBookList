@@ -1,0 +1,45 @@
+/*CONFIGURACION GENERAL*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #343434;
+    width: 80%;
+    margin: 0 auto;
+    color: #F7FFF7;
+    margin-top: 50px;
+}
+
+ul {
+    width: 80%;
+    margin: auto;
+    display: block;
+    background-color: #2F3061;
+    border-bottom: solid #6CA6C1 1px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin: 0;
+    width: 24.2%;
+    display: inline-block;
+    text-align: center;
+}
+
+section {
+    background-color: #2F3061;
+    width: 80%;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #F7FFF7;
+}
+
+a:hover {
+    color: #FFE66D;
+}
