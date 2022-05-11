@@ -36,9 +36,9 @@ public class AuthorService {
      * @param author El autor a guardar
      * @return True si se ha guardado bien, False si no
      */
-    public boolean save(Author author){
+    public Author save(Author author){
 
-        return false;
+        return  repository.save(author);
     }
 
     /**
@@ -48,8 +48,12 @@ public class AuthorService {
      * @param id El id del autor que se quiere cambiar
      * @return True si se ha editado bien, False si no
      */
-    public boolean edit(Author author, Long id){
-
-        return false;
+    public Author edit(Author author, Long id){
+        Author result = findById(id);
+        if(result != null && !result.equals(author)){
+            repository.delete(result);
+            repository.save(author);
+        }
+        return author;
     }
 }

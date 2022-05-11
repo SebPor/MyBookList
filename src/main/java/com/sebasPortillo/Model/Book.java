@@ -23,15 +23,17 @@ public class Book {
     )
     private Long id;
 
-    @Column(
-            name = "titulo"
-    )
+    @Column(name = "titulo")
     private String titulo;
 
-    @Column(
-            name = "paginas"
-    )
+    @Column(name = "paginas")
     private Integer paginas;
+
+    @Column(name = "sinopsis")
+    private String sinopsis;
+
+    @Column(name = "ISBN",nullable = false)
+    private String ISBN;
 
     public Book(){
 
@@ -67,12 +69,30 @@ public class Book {
         this.paginas = paginas;
     }
 
+    public String getSinopsis() {
+        return sinopsis;
+    }
+
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", paginas=" + paginas +
+                ", sinopsis='" + sinopsis + '\'' +
+                ", ISBN='" + ISBN + '\'' +
                 '}';
     }
 }

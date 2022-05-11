@@ -37,9 +37,9 @@ public class BookService {
      * @param book El libro a guardar
      * @return True si se guarda bien, False si no
      */
-    public boolean save (Book book){
+    public Book save (Book book){
 
-        return false;
+        return repository.save(book);
     }
 
     /**
@@ -48,8 +48,17 @@ public class BookService {
      * @param id El id del libro que se quiere cambiar
      * @return True si se edita correctamente, False si no
      */
-    public boolean edit (Book book, Long id){
+    public Book edit (Book book, Long id){
+        Book result = findById(id);
 
-        return false;
+        if(result != null && !result.equals(book)){
+            repository.delete(result);
+            repository.save(book);
+        }
+        return book;
+    }
+
+    public Book findByISBN(String isbn){
+        return repository.findByISBN(isbn);
     }
 }
