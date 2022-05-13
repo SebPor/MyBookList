@@ -14,16 +14,16 @@ public class Comment implements Serializable {
             sequenceName = "comment_sequence",
             allocationSize = 1
     )
-    private int id;
+    private long id;
 
     @Column(name = "comentario")
     private String comment;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
