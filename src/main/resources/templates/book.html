@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/book.css">
+    <title th:utext="title">Libro</title>
+</head>
+
+<body>
+
+    <aside>
+        <img id="fotoLibro" src="../static/img/imagen_de_referencia.jpg" alt="">
+        <p><strong>Titulo: </strong><span th:utext="titulo">asd</span></p>
+        <p><strong>Autor: </strong><span th:utext="autor">asd</span></p>
+        <p><strong>ISBN: </strong><span th:utext="isbn">asd</span></p>
+        <p><strong>Numero de Paginas: </strong><span th:utext="nPaginas">asd</span></p>
+        <p><strong>Sinopsis: </strong></p>
+        <p th:utext="sinopsis">Quentin Jacobsen has spent a lifetime loving the magnificently adventurous Margo Roth
+            Spiegelman from afar. So when she cracks open a window and climbs into his life—dressed like a ninja and
+            summoning him for an ingenious campaign of revenge—he follows. After their all-nighter ends, and a new day
+            breaks, Q arrives at school to discover that Margo, always an enigma, has now become a mystery. But Q soon
+            learns that there are clues—and they're for him. Urged down a disconnected path, the closer he gets, the
+            less Q sees the girl he thought he knew...</p>
+    </aside>
+    <hr>
+    <section>
+        <p><strong>Comentarios:</strong></p>
+
+        <div class="comentario">
+            <p>
+                <img id="fotoPerfil" src="../static/img/imagen_de_referencia.jpg" alt="">
+                <span th:utext="nombre">Paco</span>
+            </p>
+            <p th:utext="comentario">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, fugit. Deserunt,
+                vel. Nesciunt,
+                adipisci tenetur ab tempore in obcaecati voluptatibus quidem a eaque. Nisi, minus quo rerum enim numquam
+                aliquid!
+            </p>
+        </div>
+        <hr>
+        <div class="comentario">
+            <p>
+                <img id="fotoPerfil" src="../static/img/imagen_de_referencia.jpg" alt="">
+                <span th:utext="nombre">Paco</span>
+            </p>
+            <p th:utext="comentario">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, fugit. Deserunt, vel. Nesciunt,
+                adipisci tenetur ab tempore in obcaecati voluptatibus quidem a eaque. Nisi, minus quo rerum enim numquam
+                aliquid!
+
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima aspernatur officiis animi! Laboriosam
+                sapiente explicabo error ut deserunt ipsam dolorem perferendis eius odio totam labore ab eaque, ipsa
+                iusto suscipit!
+            </p>
+        </div>
+        <hr>
+    </section>
+</body>
+
+</html>

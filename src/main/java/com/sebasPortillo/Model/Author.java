@@ -1,10 +1,11 @@
 package com.sebasPortillo.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name ="autor")
-public class Author {
+public class Author implements Serializable {
 
     @Id
     @SequenceGenerator(
