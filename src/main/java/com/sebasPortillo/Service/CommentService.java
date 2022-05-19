@@ -20,7 +20,24 @@ public class CommentService {
         return repository.findById(id).orElse(null);
     }
 
-    public Comment save(Comment comment){
-        return repository.save(comment);
+    public boolean save(Comment comment){
+
+        try {
+            repository.save(comment);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
+        }
+    }
+
+    public boolean delete(Comment comment){
+        try {
+            repository.delete(comment);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
+        }
     }
 }

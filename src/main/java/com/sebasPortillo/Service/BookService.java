@@ -33,35 +33,33 @@ public class BookService {
         return repository.findById(id).orElse(null);
     }
 
-    /**
-     * Guarda el libro
-     * @param book El libro a guardar
-     * @return True si se guarda bien, False si no
-     */
-    public Book save (Book book){
 
-        return repository.save(book);
+    public boolean save (Book book){
+        try {
+            repository.save(book);
+            return  true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
+        }
     }
 
-    /**
-     * Cambia el libro con el id proporcinado por el nuevo libro
-     * @param book El nuevo libro
-     * @param id El id del libro que se quiere cambiar
-     * @return True si se edita correctamente, False si no
-     */
-    public Book edit (Book book, Long id){
-        Book result = findById(id);
-
-        if(result != null && !result.equals(book)){
-            repository.delete(result);
-            repository.save(book);
+    public boolean delete(Book book){
+        try {
+            repository.delete(book);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
         }
-        return book;
     }
 
     public List<Book> findByAuthor(int idAuthor){
-
         return repository.findByAuthor(idAuthor);
+    }
+
+    public List<Book> findByGender(int idGender){
+        return repository.findByGender(idGender);
     }
 
     public Book findByISBN(String isbn){

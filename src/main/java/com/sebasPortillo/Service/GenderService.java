@@ -1,42 +1,45 @@
 package com.sebasPortillo.Service;
 
-import com.sebasPortillo.Model.Author;
-import com.sebasPortillo.Model.User;
-import com.sebasPortillo.Respository.UserRepository;
+import com.sebasPortillo.Model.Gender;
+import com.sebasPortillo.Respository.GenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class GenderService {
 
     @Autowired
-    private UserRepository repository;
+    private GenderRepository repository;
 
-    public List<User> findAll(){
 
+    public List<Gender> findAll(){
         return repository.findAll();
     }
 
-    public User findById(Long id){
-       return repository.findById(id).orElse(null);
+    public Gender findById(int idGender){
+        return repository.findById(idGender).orElse(null);
     }
 
-    public boolean save(User user){
-        try {
-            repository.save(user);
+    public List<Gender> findGenderByBook(int idBook){
+
+        return repository.findGenderByBook(idBook);
+    }
+
+    public boolean save(Gender gender){
+        try{
+            repository.save(gender);
             return true;
         }catch (Exception e){
             System.out.println(e.fillInStackTrace().toString());
             return false;
         }
-
     }
 
-    public boolean delete(User user){
+    public boolean delete(Gender gender){
         try{
-            repository.delete(user);
+            repository.delete(gender);
             return true;
         }catch (Exception e){
             System.out.println(e.fillInStackTrace().toString());

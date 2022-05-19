@@ -31,29 +31,24 @@ public class AuthorService {
         return repository.findById(id).orElse(null);
     }
 
-    /**
-     * Guarda el autor
-     * @param author El autor a guardar
-     * @return True si se ha guardado bien, False si no
-     */
-    public Author save(Author author){
 
-        return  repository.save(author);
+    public boolean save(Author author){
+        try {
+            repository.save(author);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
+        }
     }
 
-    /**
-     *
-     * Edita el autor con el id asignado
-     * @param author El nuevo autor
-     * @param id El id del autor que se quiere cambiar
-     * @return True si se ha editado bien, False si no
-     */
-    public Author edit(Author author, Long id){
-        Author result = findById(id);
-        if(result != null && !result.equals(author)){
-            repository.delete(result);
-            repository.save(author);
+    public boolean delete(Author author){
+        try {
+            repository.delete(author);
+            return true;
+        }catch (Exception e){
+            System.out.println(e.fillInStackTrace().toString());
+            return false;
         }
-        return author;
     }
 }
