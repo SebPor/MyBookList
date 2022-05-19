@@ -1,5 +1,6 @@
 package com.sebasPortillo.Service;
 
+import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
 import com.sebasPortillo.Respository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ public class BookService {
             repository.save(book);
         }
         return book;
+    }
+
+    public List<Book> findByAuthor(int idAuthor){
+
+        return repository.findByAuthor(idAuthor);
     }
 
     public Book findByISBN(String isbn){
