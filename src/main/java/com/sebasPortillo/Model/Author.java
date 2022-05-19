@@ -17,26 +17,11 @@ public class Author implements Serializable {
             strategy = GenerationType.SEQUENCE,
             generator = "author_sequence"
     )
-    @Column(
-            name = "id",
-            updatable = false,
-            nullable = false
-    )
+    @Column(name = "id")
     private Long id;
 
-    @Column(
-            name = "nombre"
-    )
+    @Column(name = "nombre")
     private String nombre;
-
-    public Author(){
-
-    }
-
-    public Author(Long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
 
     public Long getId() {
         return id;

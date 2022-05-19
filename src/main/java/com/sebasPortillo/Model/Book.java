@@ -17,11 +17,7 @@ public class Book implements Serializable {
             strategy = GenerationType.SEQUENCE,
             generator = "book_sequence"
     )
-    @Column(
-            name = "id",
-            updatable = false,
-            nullable = false
-    )
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "titulo")
@@ -35,16 +31,6 @@ public class Book implements Serializable {
 
     @Column(name = "ISBN",nullable = false)
     private String ISBN;
-
-    public Book(){
-
-    }
-
-    public Book(Long id, String titulo, Integer paginas) {
-        this.id = id;
-        this.titulo = titulo;
-        this.paginas = paginas;
-    }
 
     public Long getId() {
         return id;

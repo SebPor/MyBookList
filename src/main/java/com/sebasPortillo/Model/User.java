@@ -17,24 +17,11 @@ public class User implements Serializable {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    @Column(
-            name = "id",
-            updatable = false,
-            nullable = false
-    )
+    @Column(name = "id")
     private Long id;
 
     @Column(name ="nombre")
     private String nombre;
-
-    public User(){
-
-    }
-
-    public User(Long id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
 
     public Long getId() {
         return id;

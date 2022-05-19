@@ -19,6 +19,12 @@ public class Comment implements Serializable {
     @Column(name = "comentario")
     private String comment;
 
+    @Column(name = "fk_usuario")
+    private int fk_usuario;
+
+    @Column(name = "fk_libro")
+    private int fk_libro;
+
     public long getId() {
         return id;
     }
