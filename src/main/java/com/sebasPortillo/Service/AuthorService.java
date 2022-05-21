@@ -42,13 +42,7 @@ public class AuthorService {
         }
     }
 
-    public boolean delete(Author author){
-        try {
-            repository.delete(author);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.fillInStackTrace().toString());
-            return false;
-        }
+    public void deleteById(Long id){
+        repository.deleteById(id);
     }
 }

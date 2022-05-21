@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:utext="'Gender Crud '+${mode}">Gender Crud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/crud.css">
+</head>
+
+<body>
+    <div id="botones">
+        <a id="insertar" th:href="@{/back/genderCrud/insertar}">Insertar</a>
+        <a id="ver" th:href="@{/back/genderCrud/ver}">Ver</a>
+        <a id="borrar" th:href="@{/back/genderCrud/borrar}">Borrar</a>
+    </div>
+
+
+    <table th:if="${mode} == 'ver'">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombre
+            </th>
+        </tr>
+        <tr th:each="gender : ${genders}">
+            <td th:text="${gender.id}"></td>
+            <td th:text="${gender.nombre}"></td>
+        </tr>
+    </table>
+
+    <table th:if="${mode} == borrar">
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th style="text-align: center;">
+                Boton
+            </th>
+        </tr>
+        <tr th:each="gender : ${genders} ">
+            <td th:text="${gender.id}"></td>
+            <td th:text="${gender.nombre}"></td>
+            <td class="delete">
+                <a class="deleteBoton" th:href="@{'/back/gender/delete/' + ${gender.id}}">Borrar</a>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

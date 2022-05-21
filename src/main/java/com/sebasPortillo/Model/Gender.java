@@ -10,16 +10,16 @@ public class Gender implements Serializable {
     @Id
     @GeneratedValue(generator = "gender_sequence", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "gender_sequence", allocationSize = 1)
-    private int id;
+    private long id;
 
     @Column(name = "nombre")
     private String nombre;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

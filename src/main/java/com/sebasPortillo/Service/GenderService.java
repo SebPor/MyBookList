@@ -18,7 +18,7 @@ public class GenderService {
         return repository.findAll();
     }
 
-    public Gender findById(int idGender){
+    public Gender findById(long idGender){
         return repository.findById(idGender).orElse(null);
     }
 
@@ -37,13 +37,7 @@ public class GenderService {
         }
     }
 
-    public boolean delete(Gender gender){
-        try{
-            repository.delete(gender);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.fillInStackTrace().toString());
-            return false;
-        }
+    public void deleteById(long id){
+        repository.deleteById(id);
     }
 }

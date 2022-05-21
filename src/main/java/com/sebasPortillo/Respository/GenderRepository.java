@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface GenderRepository extends JpaRepository<Gender,Integer> {
+public interface GenderRepository extends JpaRepository<Gender,Long> {
 
     @Query(value = "select g.* from genero g, generos_libro gl where g.id = gl.fk_genero and gl.fk_libro = :idBook", nativeQuery = true)
     public List<Gender> findGenderByBook(int idBook);
