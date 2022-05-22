@@ -41,9 +41,6 @@ public class Author implements Serializable {
 
     @Override
     public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                '}';
+        return nombre;
     }
 }

@@ -44,14 +44,9 @@ public class BookService {
         }
     }
 
-    public boolean delete(Book book){
-        try {
-            repository.delete(book);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.fillInStackTrace().toString());
-            return false;
-        }
+    public void deleteById(long id){
+        repository.deleteById(id);
+        repository.deleteBookReferences(id);
     }
 
     public List<Book> findByAuthor(int idAuthor){

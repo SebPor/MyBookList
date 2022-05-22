@@ -22,7 +22,7 @@ public class GenderService {
         return repository.findById(idGender).orElse(null);
     }
 
-    public List<Gender> findGenderByBook(int idBook){
+    public List<Gender> findGenderByBook(long idBook){
 
         return repository.findGenderByBook(idBook);
     }

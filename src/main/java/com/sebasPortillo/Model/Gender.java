@@ -33,9 +33,6 @@ public class Gender implements Serializable {
 
     @Override
     public String toString() {
-        return "Gender{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                '}';
+        return nombre;
     }
 }

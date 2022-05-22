@@ -45,4 +45,8 @@ public class AuthorService {
     public void deleteById(Long id){
         repository.deleteById(id);
     }
+
+    public List<Author> findAuthorByBook(long idBook){
+        return repository.findAuthorByBook(idBook);
+    }
 }

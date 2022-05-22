@@ -1,5 +1,8 @@
 package com.sebasPortillo.Model.DTOs;
 
+import com.sebasPortillo.Model.Author;
+import com.sebasPortillo.Model.Gender;
+
 import java.util.List;
 
 public class BookDTO {
@@ -9,7 +12,8 @@ public class BookDTO {
     private Integer paginas;
     private String sinopsis;
     private String isbn;
-    private List<AuthorDTO> authors;
+    private List<Gender> genders;
+    private List<Author> authors;
 
     public Long getId() {
         return id;
@@ -46,16 +50,23 @@ public class BookDTO {
     public String getIsbn() {
         return isbn;
     }
+    public List<Gender> getGenders() {
+        return genders;
+    }
+
+    public void setGenders(List<Gender> genders) {
+        this.genders = genders;
+    }
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    public List<AuthorDTO> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<AuthorDTO> authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 
