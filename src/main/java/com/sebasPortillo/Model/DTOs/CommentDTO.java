@@ -3,8 +3,9 @@ package com.sebasPortillo.Model.DTOs;
 public class CommentDTO {
 
     private Long id;
-    private String commnet;
-    private UserDTO user;
+    private String comment;
+    private String user;
+    private String book;
 
     public Long getId() {
         return id;
@@ -14,27 +15,35 @@ public class CommentDTO {
         this.id = id;
     }
 
-    public String getCommnet() {
-        return commnet;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCommnet(String commnet) {
-        this.commnet = commnet;
+    public void setComment(String commnet) {
+        this.comment = commnet;
     }
 
-    public UserDTO getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(UserDTO user) {
+    public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getBook() {
+        return book;
+    }
+
+    public void setBook(String book) {
+        this.book = book;
     }
 
     @Override
     public String toString() {
         return "CommentDTO{" +
                 "id=" + id +
-                ", commnet='" + commnet + '\'' +
+                ", commnet='" + comment + '\'' +
                 ", user=" + user +
                 '}';
     }

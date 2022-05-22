@@ -6,12 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:utext="'Comment Crud '+${mode}">Comment Crud</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/crud.css">
 </head>
 
 <body>
-    <a th:href="@{/back/commentCrud/insertar}">Insertar</a>
-    <a th:href="@{/back/commentCrud/ver}">Ver</a>
-    <a th:href="@{/back/commentCrud/borrar}">Borrar</a>
+    <div id="botones">
+        <a id="insertar" th:href="@{/back/commentCrud/insertar}">Insertar</a>
+        <a id="ver" th:href="@{/back/commentCrud/ver}">Ver</a>
+        <a id="borrar" th:href="@{/back/commentCrud/borrar}">Borrar</a>
+    </div>
+
+    <table th:if="${mode} == 'ver'">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Comentario</th>
+        </tr>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.user}"></td>
+            <td th:text="${comment.book}"></td>
+            <td th:text="${comment.comment}"></td>
+        </tr>
+    </table>
+    <table th:if="${mode} == 'borrar'">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Comentario</th>
+            <th style="text-align: center;">Boton</th>
+        </tr>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.id}"></td>
+            <td th:text="${comment.user}"></td>
+            <td th:text="${comment.book}"></td>
+            <td th:text="${comment.comment}"></td>
+            <td class="delete">
+                <a class="deleteBoton" th:href="@{'/back/comment/delete/' + ${comment.id}}">Borrar</a>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>

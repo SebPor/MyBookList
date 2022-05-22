@@ -3,9 +3,11 @@ package com.sebasPortillo.Service;
 import com.sebasPortillo.Model.Comment;
 import com.sebasPortillo.Respository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CommentService {
 
     @Autowired
@@ -16,7 +18,7 @@ public class CommentService {
         return repository.findAll();
     }
 
-    public Comment findById(Integer id){
+    public Comment findById(Long id){
         return repository.findById(id).orElse(null);
     }
 
@@ -31,13 +33,7 @@ public class CommentService {
         }
     }
 
-    public boolean delete(Comment comment){
-        try {
-            repository.delete(comment);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.fillInStackTrace().toString());
-            return false;
-        }
+    public void deleteById(Long id){
+        repository.deleteById(id);
     }
 }

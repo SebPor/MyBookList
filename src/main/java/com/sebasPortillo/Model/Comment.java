@@ -20,10 +20,10 @@ public class Comment implements Serializable {
     private String comment;
 
     @Column(name = "fk_usuario")
-    private int fk_usuario;
+    private long fk_usuario;
 
     @Column(name = "fk_libro")
-    private int fk_libro;
+    private long fk_libro;
 
     public long getId() {
         return id;
@@ -39,6 +39,22 @@ public class Comment implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public long getFk_usuario() {
+        return fk_usuario;
+    }
+
+    public void setFk_usuario(long fk_usuario) {
+        this.fk_usuario = fk_usuario;
+    }
+
+    public long getFk_libro() {
+        return fk_libro;
+    }
+
+    public void setFk_libro(long fk_libro) {
+        this.fk_libro = fk_libro;
     }
 
     @Override
