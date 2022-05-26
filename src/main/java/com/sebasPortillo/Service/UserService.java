@@ -34,13 +34,8 @@ public class UserService {
 
     }
 
-    public boolean delete(User user){
-        try{
-            repository.delete(user);
-            return true;
-        }catch (Exception e){
-            System.out.println(e.fillInStackTrace().toString());
-            return false;
-        }
+    public void delete(long id){
+        repository.deleteUserReferences(id);
+        repository.deleteById(id);
     }
 }

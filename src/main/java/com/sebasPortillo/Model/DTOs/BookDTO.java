@@ -78,6 +78,7 @@ public class BookDTO {
                 ", paginas=" + paginas +
                 ", sinopsis='" + sinopsis + '\'' +
                 ", isbn='" + isbn + '\'' +
+                ", genders=" + genders +
                 ", authors=" + authors +
                 '}';
     }

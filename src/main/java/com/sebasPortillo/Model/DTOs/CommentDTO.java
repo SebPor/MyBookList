@@ -43,8 +43,9 @@ public class CommentDTO {
     public String toString() {
         return "CommentDTO{" +
                 "id=" + id +
-                ", commnet='" + comment + '\'' +
-                ", user=" + user +
+                ", comment='" + comment + '\'' +
+                ", user='" + user + '\'' +
+                ", book='" + book + '\'' +
                 '}';
     }
 }

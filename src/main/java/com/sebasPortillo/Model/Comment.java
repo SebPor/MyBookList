@@ -62,6 +62,8 @@ public class Comment implements Serializable {
         return "Comment{" +
                 "id=" + id +
                 ", comment='" + comment + '\'' +
+                ", fk_usuario=" + fk_usuario +
+                ", fk_libro=" + fk_libro +
                 '}';
     }
 }

@@ -1,11 +1,8 @@
 package com.sebasPortillo.Controller;
 
-import com.sebasPortillo.Model.Author;
-import com.sebasPortillo.Model.Book;
-import com.sebasPortillo.Model.Comment;
+import com.sebasPortillo.Model.*;
 import com.sebasPortillo.Model.DTOs.BookDTO;
 import com.sebasPortillo.Model.DTOs.CommentDTO;
-import com.sebasPortillo.Model.Gender;
 import com.sebasPortillo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -149,5 +146,29 @@ public class BackController {
         genderService.deleteById(id);
 
         return "redirect:/back/genderCrud/borrar";
+    }
+
+    //Controladores de los Usuarios
+
+    @GetMapping({"userCrud","userCrud/{mode}"})
+    public String userCurd(@PathVariable(name = "mode", required = false)String mode, Model model){
+        if(mode == null){
+            mode = "";
+        }
+
+        model.addAttribute("mode",mode);
+
+        if(mode.equals("ver") || mode.equals("borrar")){
+            List<User> users = userService.findAll();
+            model.addAttribute("users",users);
+        }
+        return "userCrud";
+    }
+
+    @GetMapping("user/delete/{idUsuario}")
+    public String userDelete(@PathVariable(name = "idUsuario")String idUsuario){
+        long id = Long.parseLong(idUsuario);
+        userService.delete(id);
+        return "redirect:/back/userCrud/borrar";
     }
 }

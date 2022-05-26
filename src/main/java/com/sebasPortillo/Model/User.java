@@ -23,6 +23,15 @@ public class User implements Serializable {
     @Column(name ="nombre")
     private String nombre;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "nick")
+    private String nick;
+
+    @Column(name = "pass")
+    private String pass;
+
     public Long getId() {
         return id;
     }
@@ -39,11 +48,38 @@ public class User implements Serializable {
         this.nombre = nombre;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", nick='" + nick + '\'' +
+                ", pass='" + pass + '\'' +
                 '}';
     }
 }
