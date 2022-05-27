@@ -5,6 +5,7 @@ import com.sebasPortillo.Model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -24,8 +25,18 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     public List<Book> findByGender(int idGender);
 
     @Modifying
-    @Query(value =  "delete from autor_libro al where al.fk_libro = :idBook;\n" +
-                    "delete from generos_libro gl where gl.fk_libro = :idBook;\n" +
-                    "delete from usuario_libro ul where ul.fk_libro = :idBook;", nativeQuery = true)
-    public void deleteBookReferences(long idBook);
+    @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)
+    public void deleteBookReferencesAuthorBook(@Param("id") long id);
+
+    @Modifying
+    @Query(value = "delete from generos_libro gl where gl.fk_libro = :id", nativeQuery = true)
+    public void deleteBookReferencesGenderBook(@Param("id") long id);
+
+    @Modifying
+    @Query(value = "delete from usuario_libro ul where ul.fk_libro = :id", nativeQuery = true)
+    public void deleteBookReferencesUserBook(@Param("id") long id);
+
+    @Modifying
+    @Query(value = "delete from comentario where fk_libro = 1", nativeQuery = true)
+    public void deleteBookReferencesCommentBook(@Param("id") long id);
 }
