@@ -28,28 +28,20 @@ public class CommentController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping({"commentCrud","commentCrud/{mode}"})
-    public String commentCrud(@PathVariable(name = "mode", required = false) String mode, Model model){
-        if(mode == null){
-            mode = "";
-        }
+    @GetMapping("commentCrud/{mode}")
+    public String commentCrud(@PathVariable(name = "mode") String mode, Model model){
         model.addAttribute("mode",mode);
 
-        if(mode.equals("ver") || mode.equals("borrar")){
-            List<Comment> commentList = commentService.findAll();
-            List<CommentDTO> comments = new ArrayList<>(commentList.size());
-            for(int i = 0;i<commentList.size();i++){
-                CommentDTO commentDTO = new CommentDTO();
-                Comment comment = commentList.get(i);
-                commentDTO.setId(comment.getId());
-                commentDTO.setComment(comment.getComment());
-                commentDTO.setUser(userService.findById(comment.getFk_usuario()).getNombre());
-                commentDTO.setBook(bookService.findById(comment.getFk_libro()).getTitulo());
-                comments.add(commentDTO);
-            }
-            model.addAttribute("comments",comments);
+        if(mode.equals("insertar")){
+            return "back/commentInsert";
         }
-        return "commentCrud";
+
+        model.addAttribute("comments",mapCommentDTO());
+
+        if(mode.equals("ver")){
+            return "back/commentVer";
+        }
+        return "back/commentDelete";
     }
 
     @GetMapping("comment/delete/{idComment}")
@@ -58,5 +50,21 @@ public class CommentController {
         commentService.deleteById(id);
 
         return "redirect:/back/commentCrud/borrar";
+    }
+
+    private List<CommentDTO> mapCommentDTO(){
+        List<Comment> commentList = commentService.findAll();
+        List<CommentDTO> comments = new ArrayList<>(commentList.size());
+        for(int i = 0;i<commentList.size();i++){
+            CommentDTO commentDTO = new CommentDTO();
+            Comment comment = commentList.get(i);
+            commentDTO.setId(comment.getId());
+            commentDTO.setComment(comment.getComment());
+            commentDTO.setUser(userService.findById(comment.getFk_usuario()).getNombre());
+            commentDTO.setBook(bookService.findById(comment.getFk_libro()).getTitulo());
+            comments.add(commentDTO);
+        }
+
+        return comments;
     }
 }
