@@ -18,10 +18,10 @@
 
     <div id="derecha">
         <h2>MyBookList</h2>
-        <form action="#" method="GET">
-            <input type="text" name="user" placeholder="Usuario">
-            <input type="password" name="password" placeholder="Contraseña">
-            <input type="submit" id="enviar" value="Log In">
+        <form th:action="@{/checkLogin}" th:object="${user}" method="POST">
+            <input type="text" name="nick" placeholder="Usuario">
+            <input type="password" name="pass" placeholder="Contraseña">
+            <button type="submit" id="enviar">Log in</button>
         </form>
 
         <p><a href="#">Has olvidado contrasña?</a></p>

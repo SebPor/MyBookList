@@ -18,12 +18,12 @@
 
     <div id="derecha">
         <h2>MyBookList</h2>
-        <form action="#" method="GET">
-            <input type="text" name="name" placeholder="Nombre">
-            <input type="text" name="user" placeholder="Usuario">
+        <form th:action="@{/checkSingin}" th:object="${user}" method="post">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="nick" placeholder="Usuario">
             <input type="email" name="email" placeholder="Correo electrónico">
-            <input type="password" name="password" placeholder="Contraseña">
-            <input type="submit" id="enviar" value="Sing In">
+            <input type="password" name="pass" placeholder="Contraseña">
+            <button type="submit" id="enviar">Sing in</button>
         </form>
     </div>
 

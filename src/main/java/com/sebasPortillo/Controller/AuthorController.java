@@ -40,9 +40,8 @@ public class AuthorController {
 
     @PostMapping("author/insert")
     public String authorInsert(@ModelAttribute(value = "author") Author author){
-
-        System.out.println(author);
-
+        author.setId(0L);
+        authorService.save(author);
         return "redirect:/back/authorCrud/insertar";
     }
 }

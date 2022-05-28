@@ -70,5 +70,4 @@ public class BookController {
         System.out.println(book);
         return "redirect:/back/bookCrud/insertar";
     }
-
 }

@@ -1,10 +1,12 @@
 package com.sebasPortillo.Controller;
 
+import com.sebasPortillo.Model.User;
 import com.sebasPortillo.Respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,19 +23,27 @@ public class MainController {
         return "index";
     }
 
-    @PostMapping("/login")
-    public String logIn(@RequestParam(name = "name") String name, @RequestParam(name = "pass") String pass, Model model){
-        if(name.length() < 3){
-
-            return "redirect:error";
-        }
-
+    @GetMapping("/login")
+    public String logIn(){
         return "login";
     }
 
+    @PostMapping("/checkLogin")
+    public String checkLogin(@ModelAttribute(value = "user") User user){
+        System.out.println(user);
+        return "redirect:/login";
+    }
+
     @GetMapping("/singin")
-    public String singId(@RequestParam(name = "name") String name, @RequestParam(name = "pass") String pass, Model model){
+    public String singin(){
 
         return "singin";
+    }
+
+    @PostMapping("/checkSingin")
+    public String checkSingin(@ModelAttribute(value = "user") User user){
+
+        System.out.println(user);
+        return "redirect:/singin";
     }
 }
