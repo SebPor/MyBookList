@@ -18,18 +18,19 @@ public class GenderController {
     @Autowired
     private GenderService genderService;
 
-    @GetMapping({"genderCrud","genderCrud/{mode}"})
-    public String genderCrud(@PathVariable(name = "mode", required = false) String mode, Model model){
-        if(mode == null){
-            mode = "";
-        }
+    @GetMapping("genderCrud/{mode}")
+    public String genderCrud(@PathVariable(name = "mode") String mode, Model model){
         model.addAttribute("mode",mode);
 
-        if(mode.equals("ver") || mode.equals("borrar")){
-            List<Gender> genders = genderService.findAll();
-            model.addAttribute("genders",genders);
+        if(mode.equals("insertar")){
+            return "back/genderInsert";
         }
-        return "genderCrud";
+
+        model.addAttribute("genders",genderService.findAll());
+        if(mode.equals("ver")){
+            return "back/genderVer";
+        }
+        return "back/genderDelete";
     }
 
     @GetMapping("gender/delete/{idGender}")
