@@ -18,19 +18,22 @@ public class UserController {
     private UserService userService;
 
 
-    @GetMapping({"userCrud","userCrud/{mode}"})
-    public String userCurd(@PathVariable(name = "mode", required = false)String mode, Model model){
-        if(mode == null){
-            mode = "";
-        }
-
+    @GetMapping("userCrud/{mode}")
+    public String userCurd(@PathVariable(name = "mode")String mode, Model model){
         model.addAttribute("mode",mode);
 
-        if(mode.equals("ver") || mode.equals("borrar")){
-            List<User> users = userService.findAll();
-            model.addAttribute("users",users);
+        if(mode.equals("insertar")){
+            return "back/userInsert";
         }
-        return "userCrud";
+
+        model.addAttribute("users", userService.findAll());
+
+        if(mode.equals("ver")){
+            return "back/userVer";
+        }
+
+        return "back/userDelete";
+
     }
 
     @GetMapping("user/delete/{idUsuario}")
