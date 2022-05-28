@@ -31,32 +31,21 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Nick</th>
                                         <th>Correo</th>
+                                        <th>Pass</th>
                                         <th>Boton</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Nick</th>
-                                        <th>Correo</th>
-                                        <th>Boton</th>
-                                    </tr>
-                                </tfoot>
-                                <tr th:each="user : ${users}">
-                                    <td th:text="${user.id}"></td>
-                                    <td th:text="${user.nombre}"></td>
-                                    <td th:text="${user.nick}"></td>
-                                    <td th:text="${user.email}"></td>
-                                    <td class="delete">
-                                        <a class="deleteBoton" th:href="@{'/back/user/delete/' + ${user.id}}">Borrar</a>
-                                    </td>
-                                </tr>
                             </table>
+                            <form th:action="@{/back/user/insert}" th:object="${user}" method="post">
+                                <input type="text" name="nombre" />
+                                <input type="text" name="nick" />
+                                <input type="text" name="email" />
+                                <input type="text" name="pass" />
+                                <button type="submit">Insert</button>
+                            </form>
                         </div>
                     </div>
                 </div>

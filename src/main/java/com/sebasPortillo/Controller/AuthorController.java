@@ -1,13 +1,12 @@
 package com.sebasPortillo.Controller;
 
 import com.sebasPortillo.Model.Author;
+import com.sebasPortillo.Model.User;
 import com.sebasPortillo.Service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,5 +39,13 @@ public class AuthorController {
         authorService.deleteById(id);
 
         return "redirect:/back/authorCrud/borrar";
+    }
+
+    @PostMapping("author/insert")
+    public String authorInsert(@ModelAttribute(value = "user") User user){
+
+        System.out.println(user);
+
+        return "redirect:/back/authorCrud/insert";
     }
 }

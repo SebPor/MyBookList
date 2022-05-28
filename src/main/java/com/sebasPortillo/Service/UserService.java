@@ -35,7 +35,12 @@ public class UserService {
     }
 
     public void delete(long id){
-        repository.deleteUserReferences(id);
+        deleteUserReferences(id);
         repository.deleteById(id);
+    }
+
+    private void deleteUserReferences(Long id){
+        repository.deleteUserReferencesUserBook(id);
+        repository.deleteUserReferencesComentario(id);
     }
 }

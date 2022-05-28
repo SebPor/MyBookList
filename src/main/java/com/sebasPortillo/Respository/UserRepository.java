@@ -13,6 +13,10 @@ import javax.transaction.Transactional;
 public interface UserRepository extends JpaRepository<User,Long> {
 
     @Modifying
-    @Query(value = "delete from comentario where fk_usuario = :id; delete from usuario_libro where fk_usuario = :id;", nativeQuery = true)
-    public void deleteUserReferences(Long id);
+    @Query(value = "delete from comentario where fk_usuario = :id", nativeQuery = true)
+    public void deleteUserReferencesComentario(Long id);
+
+    @Modifying
+    @Query(value = "delete from usuario_libro where fk_usuario = :id", nativeQuery = true)
+    public void deleteUserReferencesUserBook(Long id);
 }
