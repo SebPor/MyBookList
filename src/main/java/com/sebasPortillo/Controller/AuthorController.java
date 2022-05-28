@@ -18,18 +18,20 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping({"authorCrud","authorCrud/{mode}"})
-    public String authorCrud(@PathVariable(name = "mode", required = false) String mode, Model model){
-        if(mode == null){
-            mode = "";
-        }
+    @GetMapping("authorCrud/{mode}")
+    public String authorCrud(@PathVariable(name = "mode") String mode, Model model){
+
         model.addAttribute("mode",mode);
 
-        if(mode.equals("ver") || mode.equals("borrar")){
-            List<Author> authors = authorService.findAll();
-            model.addAttribute("authors",authors);
+        if(mode.equals("insertar")){
+            return "back/authorInsert";
         }
-        return "authorCrud";
+        model.addAttribute("authors", authorService.findAll());
+
+        if(mode.equals("ver")){
+            return "back/authorVer";
+        }
+        return "back/authorDelete";
     }
 
     @GetMapping("author/delete/{idAuthor}")
