@@ -5,9 +5,7 @@ import com.sebasPortillo.Service.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +37,15 @@ public class GenderController {
         genderService.deleteById(id);
 
         return "redirect:/back/genderCrud/borrar";
+    }
+
+    @PostMapping("gender/insert")
+    public String genderInsert(@ModelAttribute(value = "gender") String gender){
+        Gender genderEntity = new Gender();
+        genderEntity.setId(0);
+        genderEntity.setNombre(gender);
+        genderService.save(genderEntity);
+
+        return "redirect:/back/genderCrud/insertar";
     }
 }

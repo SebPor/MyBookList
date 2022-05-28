@@ -8,8 +8,7 @@ import java.io.Serializable;
 public class Gender implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "gender_sequence", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "gender_sequence", allocationSize = 1)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "nombre")

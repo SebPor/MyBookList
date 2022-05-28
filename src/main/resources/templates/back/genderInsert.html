@@ -31,21 +31,18 @@
                             <table id="datatablesSimple">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Nombre</th>
+                                        <th>Boton</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                    </tr>
-                                </tfoot>
-                                <tr th:each="gender : ${genders}">
-                                    <td th:text="${gender.id}"></td>
-                                    <td th:text="${gender.nombre}"></td>
+                                <tr>
+
                                 </tr>
                             </table>
+                            <form th:action="@{/back/gender/insert}" th:object="${gender}" method="post">
+                                <input type="text" name="gender" />
+                                <button type="submit">Insert</button>
+                            </form>
                         </div>
                     </div>
                 </div>
