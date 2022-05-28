@@ -1,14 +1,11 @@
 package com.sebasPortillo.Controller;
 
 import com.sebasPortillo.Model.Author;
-import com.sebasPortillo.Model.User;
 import com.sebasPortillo.Service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("back/")
@@ -42,10 +39,10 @@ public class AuthorController {
     }
 
     @PostMapping("author/insert")
-    public String authorInsert(@ModelAttribute(value = "user") User user){
+    public String authorInsert(@ModelAttribute(value = "author") Author author){
 
-        System.out.println(user);
+        System.out.println(author);
 
-        return "redirect:/back/authorCrud/insert";
+        return "redirect:/back/authorCrud/insertar";
     }
 }

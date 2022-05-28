@@ -8,9 +8,7 @@ import com.sebasPortillo.Service.GenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +55,7 @@ public class BookController {
             bookDTO.setId(book.getId());
             bookDTO.setTitulo(book.getTitulo());
             bookDTO.setPaginas(book.getPaginas());
-            bookDTO.setIsbn(book.getISBN());
+            bookDTO.setISBN(book.getISBN());
             bookDTO.setSinopsis(book.getSinopsis());
             bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
             bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
@@ -65,6 +63,12 @@ public class BookController {
         }
 
         return books;
+    }
+
+    @PostMapping("book/insert")
+    public String bookInsert(@ModelAttribute(value = "book") BookDTO book){
+        System.out.println(book);
+        return "redirect:/back/bookCrud/insertar";
     }
 
 }

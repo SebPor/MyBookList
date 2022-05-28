@@ -28,24 +28,20 @@
                             Authors
                         </div>
                         <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
+                            <form th:action="@{/back/author/insert}" th:object="${author}" method="post">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Boton</th>
+                                        </tr>
+                                    </thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
+                                        <td> <input type="text" name="nombre" /></td>
+                                        <td> <button type="submit">Insert</button></td>
                                     </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                    </tr>
-                                </tfoot>
-                                <tr th:each="author : ${authors}">
-                                    <td th:text="${author.id}"></td>
-                                    <td th:text="${author.nombre}"></td>
-                                </tr>
-                            </table>
+                                </table>
+                            </form>
                         </div>
                     </div>
                 </div>

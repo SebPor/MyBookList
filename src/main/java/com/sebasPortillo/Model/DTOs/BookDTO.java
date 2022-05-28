@@ -11,7 +11,7 @@ public class BookDTO {
     private String titulo;
     private Integer paginas;
     private String sinopsis;
-    private String isbn;
+    private String ISBN;
     private List<Gender> genders;
     private List<Author> authors;
 
@@ -47,19 +47,12 @@ public class BookDTO {
         this.sinopsis = sinopsis;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
     public List<Gender> getGenders() {
         return genders;
     }
 
     public void setGenders(List<Gender> genders) {
         this.genders = genders;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
     }
 
     public List<Author> getAuthors() {
@@ -70,6 +63,14 @@ public class BookDTO {
         this.authors = authors;
     }
 
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
     @Override
     public String toString() {
         return "BookDTO{" +
@@ -77,7 +78,7 @@ public class BookDTO {
                 ", titulo='" + titulo + '\'' +
                 ", paginas=" + paginas +
                 ", sinopsis='" + sinopsis + '\'' +
-                ", isbn='" + isbn + '\'' +
+                ", ISBN='" + ISBN + '\'' +
                 ", genders=" + genders +
                 ", authors=" + authors +
                 '}';

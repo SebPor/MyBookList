@@ -28,23 +28,25 @@
                             Users
                         </div>
                         <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Nick</th>
-                                        <th>Correo</th>
-                                        <th>Pass</th>
-                                        <th>Boton</th>
-                                    </tr>
-                                </thead>
-                            </table>
                             <form th:action="@{/back/user/insert}" th:object="${user}" method="post">
-                                <input type="text" name="nombre" />
-                                <input type="text" name="nick" />
-                                <input type="text" name="email" />
-                                <input type="text" name="pass" />
-                                <button type="submit">Insert</button>
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Nick</th>
+                                            <th>Correo</th>
+                                            <th>Pass</th>
+                                            <th>Boton</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td><input type="text" name="nombre" /></td>
+                                        <td><input type="text" name="nick" /></td>
+                                        <td><input type="text" name="email" /></td>
+                                        <td><input type="text" name="pass" /></td>
+                                        <td><button type="submit">Insert</button></td>
+                                    </tr>
+                                </table>
                             </form>
                         </div>
                     </div>

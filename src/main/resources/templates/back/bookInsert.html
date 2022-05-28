@@ -28,39 +28,30 @@
                             Books
                         </div>
                         <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
+                            <form th:action="@{/back/book/insert}" th:object="${book}" method="post">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Titulo</th>
+                                            <th>ISBN</th>
+                                            <th>Author</th>
+                                            <th>Generos</th>
+                                            <th>Sinopsis</th>
+                                            <th>Paginas</th>
+                                            <th>Boton</th>
+                                        </tr>
+                                    </thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Titulo</th>
-                                        <th>ISBN</th>
-                                        <th>Author</th>
-                                        <th>Generos</th>
-                                        <th>Sinopsis</th>
-                                        <th>Paginas</th>
+                                        <td><input type="text" name="titulo" /></td>
+                                        <td><input type="text" name="ISBN" /></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><input type="text" name="sinopsis" /></td>
+                                        <td><input type="text" name="paginas" /></td>
+                                        <td><button type="submit">Insert</button></td>
                                     </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Titulo</th>
-                                        <th>ISBN</th>
-                                        <th>Author</th>
-                                        <th>Generos</th>
-                                        <th>Sinopsis</th>
-                                        <th>Paginas</th>
-                                    </tr>
-                                </tfoot>
-                                <tr th:each="book : ${books}">
-                                    <td th:text="${book.id}"></td>
-                                    <td th:text="${book.titulo}"></td>
-                                    <td th:text="${book.isbn}"></td>
-                                    <td th:text="${book.authors}"></td>
-                                    <td th:text="${book.genders}"></td>
-                                    <td th:text="${book.sinopsis}"></td>
-                                    <td th:text="${book.paginas}"></td>
-                                </tr>
-                            </table>
+                                </table>
+                            </form>
                         </div>
                     </div>
                 </div>
