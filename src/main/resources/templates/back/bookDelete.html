@@ -32,24 +32,38 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Nick</th>
-                                        <th>Correo</th>
+                                        <th>Titulo</th>
+                                        <th>ISBN</th>
+                                        <th>Author</th>
+                                        <th>Generos</th>
+                                        <th>Sinopsis</th>
+                                        <th>Paginas</th>
+                                        <th>Boton</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Nick</th>
-                                        <th>Correo</th>
+                                        <th>Titulo</th>
+                                        <th>ISBN</th>
+                                        <th>Author</th>
+                                        <th>Generos</th>
+                                        <th>Sinopsis</th>
+                                        <th>Paginas</th>
+                                        <th>Boton</th>
                                     </tr>
                                 </tfoot>
-                                <tr th:each="user : ${users}">
-                                    <td th:text="${user.id}"></td>
-                                    <td th:text="${user.nombre}"></td>
-                                    <td th:text="${user.nick}"></td>
-                                    <td th:text="${user.email}"></td>
+                                <tr th:each="book : ${books}">
+                                    <td th:text="${book.id}"></td>
+                                    <td th:text="${book.titulo}"></td>
+                                    <td th:text="${book.isbn}"></td>
+                                    <td th:text="${book.authors}"></td>
+                                    <td th:text="${book.genders}"></td>
+                                    <td th:text="${book.sinopsis}"></td>
+                                    <td th:text="${book.paginas}"></td>
+                                    <td class="delete">
+                                        <a class="deleteBoton" th:href="@{'/back/book/delete/' + ${book.id}}">Borrar</a>
+                                    </td>
                                 </tr>
                             </table>
                         </div>

@@ -28,31 +28,17 @@ public class BookController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping({"bookCrud","bookCrud/{mode}"})
-    public String bookCrud(@PathVariable(name = "mode", required = false) String mode, Model model){
-        if(mode == null){
-            mode = "";
-        }
-        model.addAttribute("mode",mode);
-        if(mode.equals("ver") || mode.equals("borrar")){
-            List<Book> bookList = bookService.findAll();
-            List<BookDTO> books = new ArrayList<>(bookList.size());
-            for(int i = 0;i<bookList.size();i++){
-                Book book = bookList.get(i);
-                BookDTO bookDTO = new BookDTO();
-                bookDTO.setId(book.getId());
-                bookDTO.setTitulo(book.getTitulo());
-                bookDTO.setPaginas(book.getPaginas());
-                bookDTO.setIsbn(book.getISBN());
-                bookDTO.setSinopsis(book.getSinopsis());
-                bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
-                bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
-                books.add(bookDTO);
-            }
-            model.addAttribute("books",books);
-        }
+    @GetMapping("bookCrud/{mode}")
+    public String bookCrud(@PathVariable(name = "mode") String mode, Model model){
+       if(mode.equals("insertar")){
+           return "back/bookInsert";
+       }
+       model.addAttribute("books",mapBookDTO());
+       if(mode.equals("borrar")){
+           return "back/bookDelete";
+       }
 
-        return "bookCrud";
+        return "back/bookVer";
     }
 
     @GetMapping("book/delete/{idBook}")
@@ -60,6 +46,25 @@ public class BookController {
         long id = Long.parseLong(idBook);
         bookService.deleteById(id);
         return "redirect:/back/bookCrud/borrar";
+    }
+
+    private List<BookDTO> mapBookDTO(){
+        List<Book> bookList = bookService.findAll();
+        List<BookDTO> books = new ArrayList<>(bookList.size());
+        for(int i = 0;i<bookList.size();i++){
+            Book book = bookList.get(i);
+            BookDTO bookDTO = new BookDTO();
+            bookDTO.setId(book.getId());
+            bookDTO.setTitulo(book.getTitulo());
+            bookDTO.setPaginas(book.getPaginas());
+            bookDTO.setIsbn(book.getISBN());
+            bookDTO.setSinopsis(book.getSinopsis());
+            bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
+            bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
+            books.add(bookDTO);
+        }
+
+        return books;
     }
 
 }
