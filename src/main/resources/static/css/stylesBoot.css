@@ -12868,3 +12868,16 @@ body {
   background-color: red;
   color: #000;
 }
+
+#searchBarContainer {
+  display: block;
+  margin: auto;
+  width: 50%;
+}
+
+#searchBar {
+  display: inline-block;
+  margin: auto;
+  width: 50%;
+  height: 30px;
+}
