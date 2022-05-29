@@ -1,11 +1,17 @@
 package com.sebasPortillo.Model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 @Table(name = "usuario")
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 
     @Id
     @Column(name = "id")
@@ -22,6 +28,9 @@ public class User implements Serializable {
 
     @Column(name = "pass")
     private String pass;
+
+    @Column(name = "roles")
+    private String roles;
 
     public Long getId() {
         return id;
@@ -63,6 +72,14 @@ public class User implements Serializable {
         this.pass = pass;
     }
 
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -71,6 +88,42 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", nick='" + nick + '\'' +
                 ", pass='" + pass + '\'' +
+                ", roles='" + roles + '\'' +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getRoles()));
+    }
+
+    @Override
+    public String getPassword() {
+        return pass;
+    }
+
+    @Override
+    public String getUsername() {
+        return nick;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

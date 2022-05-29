@@ -63,7 +63,7 @@ public class MainController {
 
     @PostMapping("/checkLogin")
     public String checkLogin(@ModelAttribute(value = "user") User user){
-        System.out.println(user);
+
         return "redirect:/login";
     }
 
@@ -75,7 +75,8 @@ public class MainController {
 
     @PostMapping("/checkSingin")
     public String checkSingin(@ModelAttribute(value = "user") User user){
-        System.out.println(user);
+        user.setRoles("USER");
+        userService.save(user);
         return "redirect:/singin";
     }
 

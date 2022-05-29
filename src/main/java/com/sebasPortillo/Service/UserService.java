@@ -4,12 +4,15 @@ import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.User;
 import com.sebasPortillo.Respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
@@ -42,5 +45,10 @@ public class UserService {
     private void deleteUserReferences(Long id){
         repository.deleteUserReferencesUserBook(id);
         repository.deleteUserReferencesComentario(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findUserByNick(username);
     }
 }

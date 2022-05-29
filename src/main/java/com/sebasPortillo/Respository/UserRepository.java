@@ -19,4 +19,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Modifying
     @Query(value = "delete from usuario_libro where fk_usuario = :id", nativeQuery = true)
     public void deleteUserReferencesUserBook(Long id);
+
+    @Query(value = "select * from usuario u where u.nick = :nick", nativeQuery = true)
+    public User findUserByNick(String nick);
 }
