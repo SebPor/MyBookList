@@ -61,6 +61,7 @@ public class BookController {
             bookDTO.setTitulo(book.getTitulo());
             bookDTO.setPaginas(book.getPaginas());
             bookDTO.setISBN(book.getISBN());
+            bookDTO.setImg(book.getImg());
             bookDTO.setSinopsis(book.getSinopsis());
             bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
             bookDTO.setGenders(genderService.findGenderByBook(book.getId()));

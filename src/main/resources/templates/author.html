@@ -2,14 +2,41 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title th:text="${author.nombre}"></title>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/stylesBoot.css" rel="stylesheet" />
 </head>
 
 <body>
-
+    <!-- Navigation-->
+    <th:block th:insert="fragments/frontNavFragment::nav" />
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                        src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                <div class="col-md-6">
+                    <h1 class="display-5 fw-bolder" th:text="${author.nombre}">Titulo libro</h1>
+                </div>
+                <div class="small mb-1">
+                    <p><strong>Nacimiento:</strong><span th:text="${author.nacimiento}">isbn</span></p>
+                    <p><strong>Edad: </strong><span th:text="${author.edad}">Autores</span></p>
+                    <p><strong>Muerte: </strong><span th:text="${author.muerte}">Generos</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <th:block th:insert="fragments/footerFragment::pie" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

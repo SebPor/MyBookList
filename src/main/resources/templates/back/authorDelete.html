@@ -33,6 +33,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
+                                        <th>Nacimiento</th>
+                                        <th>Muerte</th>
                                         <th>Boton</th>
                                     </tr>
                                 </thead>
@@ -40,12 +42,16 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
+                                        <th>Nacimiento</th>
+                                        <th>Muerte</th>
                                         <th>Boton</th>
                                     </tr>
                                 </tfoot>
                                 <tr th:each="author : ${authors}">
                                     <td th:text="${author.id}"></td>
                                     <td th:text="${author.nombre}"></td>
+                                    <td th:text="${author.nacimiento}"></td>
+                                    <td th:text="${author.muerte}"></td>
                                     <td class="delete">
                                         <a class="deleteBoton"
                                             th:href="@{'/back/author/delete/'+${author.id}}">Borrar</a>

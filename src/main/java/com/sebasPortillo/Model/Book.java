@@ -23,6 +23,9 @@ public class Book implements Serializable {
     @Column(name = "ISBN",nullable = false)
     private String ISBN;
 
+    @Column(name = "img")
+    private String img;
+
     public Long getId() {
         return id;
     }
@@ -63,6 +66,14 @@ public class Book implements Serializable {
         this.ISBN = ISBN;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -71,6 +82,7 @@ public class Book implements Serializable {
                 ", paginas=" + paginas +
                 ", sinopsis='" + sinopsis + '\'' +
                 ", ISBN='" + ISBN + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

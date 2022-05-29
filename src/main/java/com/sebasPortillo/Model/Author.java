@@ -14,6 +14,12 @@ public class Author implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "nacimiento")
+    private String nacimiento;
+
+    @Column(name = "muerte")
+    private String muerte;
+
     public Long getId() {
         return id;
     }
@@ -28,6 +34,22 @@ public class Author implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(String nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public String getMuerte() {
+        return muerte;
+    }
+
+    public void setMuerte(String muerte) {
+        this.muerte = muerte;
     }
 
     @Override

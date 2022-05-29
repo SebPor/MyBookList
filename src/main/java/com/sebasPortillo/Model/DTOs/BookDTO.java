@@ -12,6 +12,7 @@ public class BookDTO {
     private Integer paginas;
     private String sinopsis;
     private String ISBN;
+    private String img;
     private List<Gender> genders;
     private List<Author> authors;
 
@@ -65,6 +66,14 @@ public class BookDTO {
 
     public String getISBN() {
         return ISBN;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public void setISBN(String ISBN) {
