@@ -27,6 +27,14 @@ public class GenderService {
         return repository.findGenderByBook(idBook);
     }
 
+    public boolean exists(String name){
+        return repository.exists(name) != null;
+    }
+
+    public long getId(String name){
+        return repository.getId(name);
+    }
+
     public boolean save(Gender gender){
         try{
             repository.save(gender);

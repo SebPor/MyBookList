@@ -20,6 +20,12 @@ public interface AuthorRepository extends JpaRepository<Author,Long> {
     @Query(value = "select * from autor a where a.nombre like %:name%", nativeQuery = true)
     public List<Author> findAuthorByName(@Param("name") String name);
 
+    @Query(value = "select * from autor a where a.nombre = :name", nativeQuery = true)
+    public Author exists(String name);
+
+    @Query(value = "select id from autor a where a.nombre = :name", nativeQuery = true)
+    public long getID(@Param("name") String name);
+
     @Modifying
     @Query(value = "delete from autor_libro where fk_autor = :id", nativeQuery = true)
     public void deleteAuthorReferences(@Param("id") Long id);

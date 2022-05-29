@@ -1,7 +1,9 @@
 package com.sebasPortillo.Controller;
 
+import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
 import com.sebasPortillo.Model.DTOs.BookDTO;
+import com.sebasPortillo.Model.DTOs.InBookDTO;
 import com.sebasPortillo.Service.AuthorService;
 import com.sebasPortillo.Service.BookService;
 import com.sebasPortillo.Service.GenderService;
@@ -46,8 +48,10 @@ public class BookController {
         return "redirect:/back/bookCrud/borrar";
     }
     @PostMapping("book/insert")
-    public String bookInsert(@ModelAttribute(value = "book") BookDTO book){
-        System.out.println(book);
+    public String bookInsert(@ModelAttribute(value = "book") InBookDTO book){
+        if(!insertBook(book)){
+
+        }
         return "redirect:/back/bookCrud/insertar";
     }
 
@@ -69,6 +73,28 @@ public class BookController {
         }
 
         return books;
+    }
+
+    private boolean insertBook(InBookDTO book){
+        //No pueden haber 2 ISBN iguales
+        if(bookService.findByISBN(book.getISBN()) != null){
+            return false;
+        }
+        String[] autores = book.getAuthor().split(",");
+        for (String autore : autores) {
+            //Comprobamos que los autores existen
+            if (!authorService.exists(autore)) {
+                return false;
+            }
+        }
+        String[] generos = book.getGenders().split(",");
+        for (String genero : generos) {
+            if (!genderService.exists(genero)) {
+                return false;
+            }
+        }
+
+        return bookService.save(book);
     }
 
 

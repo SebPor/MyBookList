@@ -42,6 +42,14 @@ public class AuthorService {
         }
     }
 
+    public boolean exists(String name){
+        return repository.exists(name) != null;
+    }
+
+    public long getId(String name){
+        return repository.getID(name);
+    }
+
     public List<Author> findByName(String name){
 
         return repository.findAuthorByName(name);

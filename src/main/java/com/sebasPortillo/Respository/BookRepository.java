@@ -34,6 +34,14 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     public List<Book> findBookByTittle(@Param("tittle") String tittle);
 
     @Modifying
+    @Query(value = "insert into autor_libro (fk_autor, fk_libro) values (:idAuthor,:idBook)", nativeQuery = true)
+    public void linkAuthor(long idBook, long idAuthor );
+
+    @Modifying
+    @Query(value = "insert into generos_libro (fk_libro, fk_genero) values (:idBook,:idGender)", nativeQuery = true)
+    public void linkGender(long idBook, long idGender);
+
+    @Modifying
     @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)
     public void deleteBookReferencesAuthorBook(@Param("id") long id);
 

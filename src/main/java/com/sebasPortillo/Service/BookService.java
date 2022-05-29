@@ -2,7 +2,9 @@ package com.sebasPortillo.Service;
 
 import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
+import com.sebasPortillo.Model.DTOs.InBookDTO;
 import com.sebasPortillo.Respository.BookRepository;
+import com.sebasPortillo.Respository.GenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,10 @@ public class BookService {
 
     @Autowired
     private BookRepository repository;
+    @Autowired
+    private AuthorService authorService;
+    @Autowired
+    private GenderService genderService;
 
     /**
      * Devuelve una lista de todos los libros
@@ -42,14 +48,37 @@ public class BookService {
     }
 
 
-    public boolean save (Book book){
+    public boolean save (InBookDTO book){
         try {
-            repository.save(book);
+            Book bookEntity = new Book();
+            bookEntity.setId(0L);
+            bookEntity.setISBN(book.getISBN());
+            bookEntity.setPaginas(book.getPaginas());
+            bookEntity.setTitulo(book.getTitulo());
+            bookEntity.setSinopsis(book.getSinopsis());
+
+            Book result = saveEntity(bookEntity);
+
+            String[] autores = book.getAuthor().split(",");
+            for(int i = 0;i<autores.length;i++){
+                long id = authorService.getId(autores[i]);
+                repository.linkAuthor(result.getId(),id);
+            }
+
+            String[] generos = book.getGenders().split(",");
+            for(int i = 0;i<generos.length;i++){
+                repository.linkGender(result.getId(), genderService.getId(generos[i]));
+            }
+
             return  true;
         }catch (Exception e){
             System.out.println(e.fillInStackTrace().toString());
             return false;
         }
+    }
+
+    public Book saveEntity(Book book){
+        return repository.save(book);
     }
 
     public void deleteById(long id){
