@@ -35,6 +35,7 @@
                                         <th>Nombre</th>
                                         <th>Nick</th>
                                         <th>Correo</th>
+                                        <th>Roles</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -43,6 +44,7 @@
                                         <th>Nombre</th>
                                         <th>Nick</th>
                                         <th>Correo</th>
+                                        <th>Roles</th>
                                     </tr>
                                 </tfoot>
                                 <tr th:each="user : ${users}">
@@ -50,6 +52,7 @@
                                     <td th:text="${user.nombre}"></td>
                                     <td th:text="${user.nick}"></td>
                                     <td th:text="${user.email}"></td>
+                                    <td th:text="${user.roles}"></td>
                                 </tr>
                             </table>
                         </div>
