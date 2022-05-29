@@ -36,6 +36,26 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/search")
+    public String searchByAuthor(){
+
+        return "searchByAuthor";
+    }
+
+    @PostMapping("/search/book")
+    public String sarchBook(@ModelAttribute(value = "titulo") String titulo){
+        System.out.println(titulo);
+        System.out.println(bookService.findByTittle(titulo));
+        return "redirect:/";
+    }
+
+    @PostMapping("/search/author")
+    public String searchAuthor(@ModelAttribute(value = "nombre") String nombre){
+        System.out.println(nombre);
+        System.out.println(authorService.findByName(nombre));
+        return "redirect:/search";
+    }
+
     @GetMapping("/login")
     public String logIn(){
         return "login";

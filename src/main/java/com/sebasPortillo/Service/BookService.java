@@ -57,6 +57,10 @@ public class BookService {
         repository.deleteById(id);
     }
 
+    public List<Book> findByTittle(String tittle){
+        return repository.findBookByTittle(tittle);
+    }
+
     private void deleteBookReferences(long id){
         repository.deleteBookReferencesUserBook(id);
         repository.deleteBookReferencesAuthorBook(id);

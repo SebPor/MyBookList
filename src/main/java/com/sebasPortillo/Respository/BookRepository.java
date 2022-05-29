@@ -30,6 +30,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(value = "select l.* from libro l, usuario_libro ul where ul.fk_libro = l.id and ul.fk_usuario = :idUser", nativeQuery = true)
     public List<Book> findBookByUser(long idUser);
 
+    @Query(value = "select * from libro l where l.titulo like %:tittle%", nativeQuery = true)
+    public List<Book> findBookByTittle(@Param("tittle") String tittle);
+
     @Modifying
     @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)
     public void deleteBookReferencesAuthorBook(@Param("id") long id);

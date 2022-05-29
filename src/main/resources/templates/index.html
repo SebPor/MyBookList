@@ -17,7 +17,7 @@
                 <h1 style="text-align:center ;">MyBookList</h1>
 
                 <div id="searchBarContainer">
-                    <form action="">
+                    <form th:action="@{/search/book}" th:object="${titulo}" method="post">
                         <input id="searchBar" type="text" placeholder="Search by Books">
                         <button type="submit"><img src="/img/lupa.png" style="width:20px; height:20px"></button>
                     </form>

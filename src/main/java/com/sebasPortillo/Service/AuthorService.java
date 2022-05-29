@@ -42,6 +42,11 @@ public class AuthorService {
         }
     }
 
+    public List<Author> findByName(String name){
+
+        return repository.findAuthorByName(name);
+    }
+
     public void deleteById(Long id){
         repository.deleteAuthorReferences(id);
         repository.deleteById(id);
