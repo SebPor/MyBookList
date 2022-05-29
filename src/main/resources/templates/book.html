@@ -2,64 +2,58 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/book.css">
-    <title th:utext="title">Libro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title th:text="book.titulo"></title>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/stylesBoot.css" rel="stylesheet" />
 </head>
 
 <body>
-
-    <aside>
-        <img id="fotoLibro" src="../static/img/imagen_de_referencia.jpg" alt="">
-        <p><strong>Titulo: </strong><span th:utext="titulo">asd</span></p>
-        <p><strong>Autor: </strong><span th:utext="autor">asd</span></p>
-        <p><strong>ISBN: </strong><span th:utext="isbn">asd</span></p>
-        <p><strong>Numero de Paginas: </strong><span th:utext="nPaginas">asd</span></p>
-        <p><strong>Sinopsis: </strong></p>
-        <p th:utext="sinopsis">Quentin Jacobsen has spent a lifetime loving the magnificently adventurous Margo Roth
-            Spiegelman from afar. So when she cracks open a window and climbs into his life—dressed like a ninja and
-            summoning him for an ingenious campaign of revenge—he follows. After their all-nighter ends, and a new day
-            breaks, Q arrives at school to discover that Margo, always an enigma, has now become a mystery. But Q soon
-            learns that there are clues—and they're for him. Urged down a disconnected path, the closer he gets, the
-            less Q sees the girl he thought he knew...</p>
-    </aside>
-    <hr>
-    <section>
-        <p><strong>Comentarios:</strong></p>
-
-        <div class="comentario">
-            <p>
-                <img id="fotoPerfil" src="../static/img/imagen_de_referencia.jpg" alt="">
-                <span th:utext="nombre">Paco</span>
-            </p>
-            <p th:utext="comentario">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, fugit. Deserunt,
-                vel. Nesciunt,
-                adipisci tenetur ab tempore in obcaecati voluptatibus quidem a eaque. Nisi, minus quo rerum enim numquam
-                aliquid!
-            </p>
+    <!-- Navigation-->
+    <th:block th:insert="fragments/frontNavFragment::nav" />
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
+                        src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                <div class="col-md-6">
+                    <h1 class="display-5 fw-bolder" th:text="${book.titulo}">Titulo libro</h1>
+                    <div class="small mb-1">
+                        <p><strong>ISBN:</strong><span th:text="${book.ISBN}">isbn</span></p>
+                        <p><strong>Authors: </strong><span th:text="${book.authors}">Autores</span></p>
+                        <p><strong>Genders: </strong><span th:text="${book.genders}">Generos</span></p>
+                    </div>
+                    <p class="lead" th:text="${book.sinopsis}"></p>
+                    <div class="d-flex">
+                        <form th:action="@{/list/1}" th:object="${idBook}" method="post">
+                            <input type="text" style="display:none;" value="${book.id}" name="idBook">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                Add to List
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <hr>
-        <div class="comentario">
-            <p>
-                <img id="fotoPerfil" src="../static/img/imagen_de_referencia.jpg" alt="">
-                <span th:utext="nombre">Paco</span>
-            </p>
-            <p th:utext="comentario">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, fugit. Deserunt, vel. Nesciunt,
-                adipisci tenetur ab tempore in obcaecati voluptatibus quidem a eaque. Nisi, minus quo rerum enim numquam
-                aliquid!
-
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima aspernatur officiis animi! Laboriosam
-                sapiente explicabo error ut deserunt ipsam dolorem perferendis eius odio totam labore ab eaque, ipsa
-                iusto suscipit!
-            </p>
-        </div>
-        <hr>
     </section>
+    <!-- Related items section-->
+    <section class="py-5 bg-light">
+        <div class="container px-4 px-lg-5 mt-5">
+            <h2 class="fw-bolder mb-4">Related products</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <th:block th:insert="fragments/footerFragment::pie" />
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
 </body>
 
 </html>

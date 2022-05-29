@@ -45,6 +45,11 @@ public class BookController {
         bookService.deleteById(id);
         return "redirect:/back/bookCrud/borrar";
     }
+    @PostMapping("book/insert")
+    public String bookInsert(@ModelAttribute(value = "book") BookDTO book){
+        System.out.println(book);
+        return "redirect:/back/bookCrud/insertar";
+    }
 
     private List<BookDTO> mapBookDTO(){
         List<Book> bookList = bookService.findAll();
@@ -65,9 +70,5 @@ public class BookController {
         return books;
     }
 
-    @PostMapping("book/insert")
-    public String bookInsert(@ModelAttribute(value = "book") BookDTO book){
-        System.out.println(book);
-        return "redirect:/back/bookCrud/insertar";
-    }
+
 }
