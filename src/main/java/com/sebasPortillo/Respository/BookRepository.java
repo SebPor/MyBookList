@@ -41,6 +41,9 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(value = "insert into generos_libro (fk_libro, fk_genero) values (:idBook,:idGender)", nativeQuery = true)
     public void linkGender(long idBook, long idGender);
 
+    @Query(value = "select * from libro l order by id desc limit 1", nativeQuery = true)
+    public Book findLastBook();
+
     @Modifying
     @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)
     public void deleteBookReferencesAuthorBook(@Param("id") long id);

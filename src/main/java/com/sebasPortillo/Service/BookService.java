@@ -57,17 +57,19 @@ public class BookService {
             bookEntity.setTitulo(book.getTitulo());
             bookEntity.setSinopsis(book.getSinopsis());
 
-            Book result = saveEntity(bookEntity);
+            saveEntity(bookEntity);
+            long id = repository.findLastBook().getId();
 
             String[] autores = book.getAuthor().split(",");
             for(int i = 0;i<autores.length;i++){
-                long id = authorService.getId(autores[i]);
-                repository.linkAuthor(result.getId(),id);
+                long idAuthor = authorService.getId(autores[i]);
+                repository.linkAuthor(id,id);
             }
 
             String[] generos = book.getGenders().split(",");
             for(int i = 0;i<generos.length;i++){
-                repository.linkGender(result.getId(), genderService.getId(generos[i]));
+                long idGeneros = genderService.getId(generos[i]);
+                repository.linkGender(id, idGeneros);
             }
 
             return  true;
