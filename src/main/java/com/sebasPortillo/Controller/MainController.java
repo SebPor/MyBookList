@@ -75,9 +75,10 @@ public class MainController {
 
     @PostMapping("/checkSingin")
     public String checkSingin(@ModelAttribute(value = "user") User user){
+        user.setId(0L);
         user.setRoles("USER");
         userService.save(user);
-        return "redirect:/singin";
+        return "redirect:/";
     }
 
     @GetMapping("/book/{idBook}")
