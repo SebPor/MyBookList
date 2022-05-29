@@ -2,11 +2,9 @@ package com.sebasPortillo.Controller;
 
 import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
+import com.sebasPortillo.Model.DTOs.AuthorDTO;
 import com.sebasPortillo.Model.DTOs.BookDTO;
 import com.sebasPortillo.Model.User;
-import com.sebasPortillo.Respository.AuthorRepository;
-import com.sebasPortillo.Respository.BookRepository;
-import com.sebasPortillo.Respository.UserRepository;
 import com.sebasPortillo.Service.AuthorService;
 import com.sebasPortillo.Service.BookService;
 import com.sebasPortillo.Service.GenderService;
@@ -15,9 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -60,7 +55,6 @@ public class MainController {
 
     @PostMapping("/checkSingin")
     public String checkSingin(@ModelAttribute(value = "user") User user){
-
         System.out.println(user);
         return "redirect:/singin";
     }
@@ -87,7 +81,7 @@ public class MainController {
             return "redirect:error";
         }
 
-        model.addAttribute("author", author);
+        model.addAttribute("author", mapAuthorDTO(author));
         return "author";
     }
 
@@ -103,6 +97,17 @@ public class MainController {
         bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
 
         return bookDTO;
+    }
+
+    private AuthorDTO mapAuthorDTO(Author author){
+        AuthorDTO authorDTO = new AuthorDTO();
+        authorDTO.setId(author.getId());
+        authorDTO.setMuerte(author.getMuerte());
+        authorDTO.setNacimiento(author.getNacimiento());
+        authorDTO.setEdad();
+        authorDTO.setNombre(author.getNombre());
+
+        return authorDTO;
     }
 
 

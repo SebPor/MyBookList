@@ -19,10 +19,16 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     public Book findByISBN(String isbn);
 
     @Query(value = "select l.* from libro l, autor_libro al where l.id = al.fk_libro  and al.fk_autor = :idAuthor", nativeQuery = true)
-    public List<Book> findByAuthor(int idAuthor);
+    public List<Book> findByAuthor(long idAuthor);
 
     @Query(value = "select l.* from libro l, generos_libro gl where l.id = gl.fk_libro and gl.fk_genero = :idGender", nativeQuery = true)
-    public List<Book> findByGender(int idGender);
+    public List<Book> findByGender(long idGender);
+
+    @Query(value = "select l.* from libro l, usuario_libro ul where ul.fk_usuario = :idUser and ul.fk_estado = :estado and l.id = ul.fk_libro", nativeQuery = true)
+    public List<Book> findBookByEstado(int estado, long idUser);
+
+    @Query(value = "select l.* from libro l, usuario_libro ul where ul.fk_libro = l.id and ul.fk_usuario = :idUser", nativeQuery = true)
+    public List<Book> findBookByUser(long idUser);
 
     @Modifying
     @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)

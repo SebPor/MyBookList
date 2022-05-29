@@ -48,12 +48,19 @@ public class AuthorDTO {
 
     public void setNacimiento(String nacimiento) {
         this.nacimiento = nacimiento;
+    }
+
+    public void setEdad(){
+
         GregorianCalendar hoy = new GregorianCalendar();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         GregorianCalendar fecha = new GregorianCalendar();
         try{
             Date aux = sdf.parse(nacimiento);
             fecha.setTime(aux);
+            if(muerte != null){
+                hoy.setTime(sdf.parse(muerte));
+            }
         }catch (ParseException e){
             System.out.println(e.fillInStackTrace().toString());
         }

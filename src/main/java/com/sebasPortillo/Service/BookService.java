@@ -33,6 +33,14 @@ public class BookService {
         return repository.findById(id).orElse(null);
     }
 
+    public List<Book> findBookByEstado(int estado, long idUser){
+        return repository.findBookByEstado(estado,idUser);
+    }
+
+    public List<Book> findBookByUser(long idUser){
+        return repository.findBookByUser(idUser);
+    }
+
 
     public boolean save (Book book){
         try {
@@ -56,11 +64,11 @@ public class BookService {
         repository.deleteBookReferencesCommentBook(id);
     }
 
-    public List<Book> findByAuthor(int idAuthor){
+    public List<Book> findByAuthor(long idAuthor){
         return repository.findByAuthor(idAuthor);
     }
 
-    public List<Book> findByGender(int idGender){
+    public List<Book> findByGender(long idGender){
         return repository.findByGender(idGender);
     }
 
