@@ -30,7 +30,7 @@ public class MainController {
     @Autowired
     private GenderService genderService;
 
-    @GetMapping({"/","/index","/inicio"})
+    @GetMapping({"/", "index"})
     public String index(Model model){
 
         return "index";
