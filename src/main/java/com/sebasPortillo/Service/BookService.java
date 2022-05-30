@@ -1,10 +1,8 @@
 package com.sebasPortillo.Service;
 
-import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
 import com.sebasPortillo.Model.DTOs.InBookDTO;
 import com.sebasPortillo.Respository.BookRepository;
-import com.sebasPortillo.Respository.GenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
