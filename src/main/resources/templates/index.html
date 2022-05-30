@@ -15,7 +15,6 @@
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <h1 style="text-align:center ;">MyBookList</h1>
-
                 <div id="searchBarContainer">
                     <form th:action="@{/search/book}" th:object="${titulo}" method="post">
                         <input id="searchBar" type="text" placeholder="Search by Books">
@@ -26,6 +25,12 @@
         </div>
     </section>
     <th:block th:insert="fragments/footerFragment::pie" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/datatables-simple-demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 </body>
 
 </html>

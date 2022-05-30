@@ -99,6 +99,14 @@ public class BookService {
         repository.deleteBookReferencesCommentBook(id);
     }
 
+    public List<Book> findBooksByAuthorName(String name){
+        return repository.findBooksByAuthorName(name);
+    }
+
+    public List<Book> findBooksByGenderName(String name){
+        return repository.findBooksByGenderName(name);
+    }
+
     public List<Book> findByAuthor(long idAuthor){
         return repository.findByAuthor(idAuthor);
     }

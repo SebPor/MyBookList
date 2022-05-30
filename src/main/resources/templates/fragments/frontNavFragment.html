@@ -19,7 +19,17 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" th:href="@{/list/5}">List</a></li>
-                    <li class="nav-item"><a class="nav-link active" th:href="@{/search}">Search by Author</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Search By</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" th:href="@{/author}">Author</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/gender}">Gender</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link active" th:href="@{/singin}">Sing in</a></li>
                     <li class="nav-item"><a class="nav-link active" th:href="@{/back}">Back</a></li>
                 </ul>

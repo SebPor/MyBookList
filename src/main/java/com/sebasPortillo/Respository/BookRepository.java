@@ -44,6 +44,12 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(value = "select * from libro l order by id desc limit 1", nativeQuery = true)
     public Book findLastBook();
 
+    @Query(value = "select l.* from libro l, autor_libro al, autor a where l.id = al.fk_libro and al.fk_autor = a.id and a.nombre like %:name%", nativeQuery = true)
+    public List<Book> findBooksByAuthorName(@Param("name") String name);
+
+    @Query(value = "select l.* from libro l, generos_libro gl, genero g where l.id = gl.fk_libro and gl.fk_genero = g.id and g.nombre like %:name%", nativeQuery = true)
+    public List<Book> findBooksByGenderName(@Param("name") String name);
+
     @Modifying
     @Query(value =  "delete from autor_libro al where al.fk_libro = :id", nativeQuery = true)
     public void deleteBookReferencesAuthorBook(@Param("id") long id);
