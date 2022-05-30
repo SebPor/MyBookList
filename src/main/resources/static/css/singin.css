@@ -1,3 +1,7 @@
+body {
+    background-color: white;
+}
+
 /*
     CONFIGURACIÓN DE LOS DIVS
 */
@@ -6,7 +10,6 @@ div {
     width: 45%;
     display: inline-block;
     height: 500px;
-    border: solid red 1px;
 }
 
 #derecha {
