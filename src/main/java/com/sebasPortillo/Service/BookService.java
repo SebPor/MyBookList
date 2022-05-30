@@ -63,7 +63,7 @@ public class BookService {
             String[] autores = book.getAuthor().split(",");
             for(int i = 0;i<autores.length;i++){
                 long idAuthor = authorService.getId(autores[i]);
-                repository.linkAuthor(id,id);
+                repository.linkAuthor(id,idAuthor);
             }
 
             String[] generos = book.getGenders().split(",");
