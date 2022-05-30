@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 public class MainController {
@@ -49,23 +51,29 @@ public class MainController {
     }
 
     @PostMapping("/search/gender")
-    public String searchGender(@ModelAttribute(value = "nombre") String nombre){
-        System.out.println(nombre);
-        System.out.println(bookService.findBooksByGenderName(nombre));
+    public String searchGender(@ModelAttribute(value = "nombre") String nombre, Model model){
+        List<Book> books = bookService.findBooksByGenderName(nombre);
+
+        model.addAttribute("books", books);
+        model.addAttribute("busqueda",nombre);
         return "genderList";
     }
 
     @PostMapping("/search/book")
-    public String sarchBook(@ModelAttribute(value = "titulo") String titulo){
-        System.out.println(titulo);
-        System.out.println(bookService.findByTittle(titulo));
+    public String sarchBook(@ModelAttribute(value = "titulo") String titulo, Model model){
+        List<Book> books = bookService.findByTittle(titulo);
+
+        model.addAttribute("books", books);
+        model.addAttribute("busqueda",titulo);
         return "bookList";
     }
 
     @PostMapping("/search/author")
-    public String searchAuthor(@ModelAttribute(value = "nombre") String nombre){
-        System.out.println(nombre);
-        System.out.println(bookService.findBooksByAuthorName(nombre));
+    public String searchAuthor(@ModelAttribute(value = "nombre") String nombre, Model model){
+
+        List<Book> books = bookService.findBooksByAuthorName(nombre);
+        model.addAttribute("books", books);
+        model.addAttribute("busqueda",nombre);
         return "authorList";
     }
 
