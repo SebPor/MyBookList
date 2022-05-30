@@ -2,6 +2,7 @@ package com.sebasPortillo.Controller;
 
 import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
+import com.sebasPortillo.Model.DTOs.AddBookToListDTO;
 import com.sebasPortillo.Model.DTOs.ListDTO;
 import com.sebasPortillo.Model.User;
 import com.sebasPortillo.Service.AuthorService;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +64,22 @@ public class ListController {
                 break;
         }
         return "main_list";
+    }
+
+    @PostMapping("/book/add")
+    public String addBookToList(@ModelAttribute(value = "ids")AddBookToListDTO ids){
+
+        System.out.println("Hola");
+        System.out.println("Book: " +ids.getIdBook());
+        System.out.println("USer: " +ids.getIdUser());
+        System.out.println("Estado: "+ids.getIdEstado());
+        long idUser = Long.parseLong(ids.getIdUser());
+        long idBook = Long.parseLong(ids.getIdBook());
+        int idEstado = Integer.parseInt(ids.getIdEstado());
+
+        bookService.addBookToList(idUser,idBook, idEstado);
+
+        return "redirect:/";
     }
 
     private List<ListDTO> masListDTOs(long idUser, int estado){

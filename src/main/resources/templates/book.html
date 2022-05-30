@@ -29,10 +29,28 @@
                     </div>
                     <p class="lead" th:text="${book.sinopsis}"></p>
                     <div class="d-flex">
-                        <form th:action="@{/list/1}" th:object="${idBook}" method="post">
-                            <input type="text" style="display:none;" value="${book.id}" name="idBook">
+                        <form th:action="@{/book/add}" th:object="${ids}" method="post">
+                            <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
+                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" value="3" name="idEstado">
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit">
-                                Add to List
+                                Add to Completed
+                            </button>
+                        </form>
+                        <form th:action="@{/book/add}" th:object="${ids}" method="post">
+                            <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
+                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" value="1" name="idEstado">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                Add to Reading
+                            </button>
+                        </form>
+                        <form th:action="@{/book/add}" th:object="${ids}" method="post">
+                            <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
+                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" value="2" name="idEstado">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                Add to Plan to read
                             </button>
                         </form>
                     </div>

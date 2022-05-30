@@ -33,14 +33,6 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Query(value = "select * from libro l where l.titulo like %:tittle%", nativeQuery = true)
     public List<Book> findBookByTittle(@Param("tittle") String tittle);
 
-    @Modifying
-    @Query(value = "insert into autor_libro (fk_autor, fk_libro) values (:idAuthor,:idBook)", nativeQuery = true)
-    public void linkAuthor(long idBook, long idAuthor );
-
-    @Modifying
-    @Query(value = "insert into generos_libro (fk_libro, fk_genero) values (:idBook,:idGender)", nativeQuery = true)
-    public void linkGender(long idBook, long idGender);
-
     @Query(value = "select * from libro l order by id desc limit 1", nativeQuery = true)
     public Book findLastBook();
 
@@ -65,4 +57,16 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     @Modifying
     @Query(value = "delete from comentario where fk_libro = 1", nativeQuery = true)
     public void deleteBookReferencesCommentBook(@Param("id") long id);
+
+    @Modifying
+    @Query(value = "insert into autor_libro (fk_autor, fk_libro) values (:idAuthor,:idBook)", nativeQuery = true)
+    public void linkAuthor(long idBook, long idAuthor );
+
+    @Modifying
+    @Query(value = "insert into generos_libro (fk_libro, fk_genero) values (:idBook,:idGender)", nativeQuery = true)
+    public void linkGender(long idBook, long idGender);
+
+    @Modifying
+    @Query(value = "insert into usuario_libro (fk_usuario, fk_libro, fk_estado) values (:idUser,:idBook,:idEstado)", nativeQuery = true)
+    public void addBookToList(long idUser, long idBook, int idEstado);
 }

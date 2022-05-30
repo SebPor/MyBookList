@@ -118,4 +118,8 @@ public class BookService {
     public Book findByISBN(String isbn){
         return repository.findByISBN(isbn);
     }
+
+    public void addBookToList(long idUser, long idBook, int idEstado){
+        repository.addBookToList(idUser,idBook,idEstado);
+    }
 }
