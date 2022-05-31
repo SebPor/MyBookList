@@ -61,8 +61,14 @@
     <!-- Related items section-->
     <section class="py-5 bg-light">
         <div class="container px-4 px-lg-5 mt-5">
-            <h2 class="fw-bolder mb-4">Related products</h2>
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <h2 class="fw-bolder mb-4">Comment Secction</h2>
+
+            <div th:each="comment : ${comments}">
+                <strong th:text="${comment.user}">Nombre de Usuario</strong>
+                <p th:text="${comment.comment}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio itaque
+                    quos velit deserunt
+                    explicabo provident! Autem consequatur dolorum soluta laboriosam iste laborum fuga dolorem
+                    excepturi fugiat. Amet at enim alias.</p>
             </div>
         </div>
     </section>

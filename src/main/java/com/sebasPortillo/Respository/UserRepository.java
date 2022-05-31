@@ -22,4 +22,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query(value = "select * from usuario u where u.nick = :nick", nativeQuery = true)
     public User findUserByNick(String nick);
+
+    @Query(value = "select u.* from comentario c, usuario u where :id = u.id limit 1", nativeQuery = true)
+    public User findUserByCommentId(long id);
 }

@@ -2,18 +2,18 @@ package com.sebasPortillo.Controller;
 
 import com.sebasPortillo.Model.Author;
 import com.sebasPortillo.Model.Book;
+import com.sebasPortillo.Model.Comment;
 import com.sebasPortillo.Model.DTOs.AuthorDTO;
 import com.sebasPortillo.Model.DTOs.BookDTO;
+import com.sebasPortillo.Model.DTOs.CommentDTO;
 import com.sebasPortillo.Model.User;
-import com.sebasPortillo.Service.AuthorService;
-import com.sebasPortillo.Service.BookService;
-import com.sebasPortillo.Service.GenderService;
-import com.sebasPortillo.Service.UserService;
+import com.sebasPortillo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,6 +31,9 @@ public class MainController {
 
     @Autowired
     private GenderService genderService;
+
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping({"/", "index"})
     public String index(Model model){
@@ -107,11 +110,23 @@ public class MainController {
         long id = Long.parseLong(idBook);
         Book book = bookService.findById(id);
 
+        List<Comment> commentList = commentService.findCommentByBookId(id);
+        List<CommentDTO> comments = new ArrayList<>(commentList.size());
+        for(Comment c : commentList){
+            CommentDTO commentDTO = new CommentDTO();
+            commentDTO.setId(c.getId());
+            commentDTO.setComment(c.getComment());
+            User user = userService.findUserByCommentId(c.getFk_usuario());
+            commentDTO.setUser(user.getNick());
+            comments.add(commentDTO);
+        }
+
         if(book == null){
             return "redirect:error";
         }
 
         model.addAttribute("book",mapBookDTO(book));
+        model.addAttribute("comments",comments);
         return "book";
     }
 

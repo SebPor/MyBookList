@@ -36,4 +36,8 @@ public class CommentService {
     public void deleteById(Long id){
         repository.deleteById(id);
     }
+
+    public List<Comment> findCommentByBookId(long id){
+        return repository.findCommentsByBookId(id);
+    }
 }
