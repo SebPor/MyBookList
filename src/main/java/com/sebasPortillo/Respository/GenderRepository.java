@@ -13,7 +13,7 @@ import java.util.List;
 public interface GenderRepository extends JpaRepository<Gender,Long> {
 
     @Query(value = "select g.* from genero g, generos_libro gl where g.id = gl.fk_genero and gl.fk_libro = :idBook", nativeQuery = true)
-    public List<Gender> findGenderByBook(long idBook);
+    public List<Gender> findGenderByBookId(long idBook);
 
     @Query(value = "select * from genero g where g.nombre = :name", nativeQuery = true)
     public Gender exists(String name);

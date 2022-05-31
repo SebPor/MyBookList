@@ -16,7 +16,7 @@
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <h1 style="text-align:center ;">MyBookList</h1>
 
-                <div id="searchBarContainer">
+                <div id="searchBarContainer" style="height:50vh;">
                     <form th:action="@{/search/author}" th:object="${nombre}" method="post">
                         <input id="searchBar" name="nombre" type="text" placeholder="Search by Author">
                         <button type="submit"><img src="/img/lupa.png" style="width:20px; height:20px"></button>

@@ -8,12 +8,7 @@ import java.io.Serializable;
 public class Comment implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_sequence")
-    @SequenceGenerator(
-            name = "comment_sequence",
-            sequenceName = "comment_sequence",
-            allocationSize = 1
-    )
+    @Column(name = "id")
     private long id;
 
     @Column(name = "comentario")

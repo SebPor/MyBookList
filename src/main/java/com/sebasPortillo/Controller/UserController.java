@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("user/insert")
-    public String authorInsert(@ModelAttribute(value = "user") User user){
+    public String userInsert(@ModelAttribute(value = "user") User user){
         user.setId(0L);
         user.setRoles("ADMIN");
         userService.save(user);

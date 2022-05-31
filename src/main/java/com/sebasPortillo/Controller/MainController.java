@@ -154,7 +154,7 @@ public class MainController {
         bookDTO.setImg(book.getImg());
         bookDTO.setSinopsis(book.getSinopsis());
         bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
-        bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
+        bookDTO.setGenders(genderService.findGenderByBookId(book.getId()));
 
         return bookDTO;
     }

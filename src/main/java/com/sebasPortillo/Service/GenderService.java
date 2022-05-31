@@ -22,9 +22,9 @@ public class GenderService {
         return repository.findById(idGender).orElse(null);
     }
 
-    public List<Gender> findGenderByBook(long idBook){
+    public List<Gender> findGenderByBookId(long idBook){
 
-        return repository.findGenderByBook(idBook);
+        return repository.findGenderByBookId(idBook);
     }
 
     public boolean exists(String name){

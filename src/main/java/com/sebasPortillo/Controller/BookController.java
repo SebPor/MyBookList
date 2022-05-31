@@ -49,9 +49,7 @@ public class BookController {
     }
     @PostMapping("book/insert")
     public String bookInsert(@ModelAttribute(value = "book") InBookDTO book){
-        if(!insertBook(book)){
-
-        }
+        insertBook(book);
         return "redirect:/back/bookCrud/insertar";
     }
 
@@ -68,7 +66,7 @@ public class BookController {
             bookDTO.setImg(book.getImg());
             bookDTO.setSinopsis(book.getSinopsis());
             bookDTO.setAuthors(authorService.findAuthorByBook(book.getId()));
-            bookDTO.setGenders(genderService.findGenderByBook(book.getId()));
+            bookDTO.setGenders(genderService.findGenderByBookId(book.getId()));
             books.add(bookDTO);
         }
 
