@@ -25,4 +25,11 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query(value = "select u.* from comentario c, usuario u where :id = u.id limit 1", nativeQuery = true)
     public User findUserByCommentId(long id);
+
+    @Modifying
+    @Query(value = "insert into sesion (idUser) values(:id)", nativeQuery = true)
+    public void insertSesion(long id);
+
+    @Query(value = "select idUser from sesion order by id desc limit 1", nativeQuery = true)
+    public long recuperarSesion();
 }

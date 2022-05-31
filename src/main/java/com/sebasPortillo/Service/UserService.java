@@ -49,10 +49,16 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findUserByNick(username);
+        User user = repository.findUserByNick(username);
+        repository.insertSesion(user.getId());
+        return user;
     }
 
     public User findUserByCommentId(long id){
         return repository.findUserByCommentId(id);
+    }
+
+    public long recuperarSesion(){
+        return repository.recuperarSesion();
     }
 }

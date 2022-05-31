@@ -31,7 +31,7 @@
                     <div class="d-flex">
                         <form th:action="@{/book/add}" th:object="${ids}" method="post">
                             <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
-                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" th:value="${idUSer}" name="idUser">
                             <input type="text" style="display:none;" value="3" name="idEstado">
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 Add to Completed
@@ -39,7 +39,7 @@
                         </form>
                         <form th:action="@{/book/add}" th:object="${ids}" method="post">
                             <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
-                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" th:value="${idUser}" name="idUser">
                             <input type="text" style="display:none;" value="1" name="idEstado">
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 Add to Reading
@@ -47,7 +47,7 @@
                         </form>
                         <form th:action="@{/book/add}" th:object="${ids}" method="post">
                             <input type="text" style="display:none;" th:value="${book.id}" name="idBook">
-                            <input type="text" style="display:none;" value="5" name="idUser">
+                            <input type="text" style="display:none;" th:value="${idUser}" name="idUser">
                             <input type="text" style="display:none;" value="2" name="idEstado">
                             <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 Add to Plan to read

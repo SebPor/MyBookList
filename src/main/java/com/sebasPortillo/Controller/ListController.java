@@ -66,6 +66,12 @@ public class ListController {
         return "main_list";
     }
 
+    @GetMapping("/list")
+    public String list(){
+
+        return "redirect:/list/"+ userService.recuperarSesion();
+    }
+
     @PostMapping("/book/add")
     public String addBookToList(@ModelAttribute(value = "ids")AddBookToListDTO ids){
 

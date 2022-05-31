@@ -124,7 +124,7 @@ public class MainController {
         if(book == null){
             return "redirect:error";
         }
-
+        model.addAttribute("idUser", userService.recuperarSesion());
         model.addAttribute("book",mapBookDTO(book));
         model.addAttribute("comments",comments);
         return "book";
